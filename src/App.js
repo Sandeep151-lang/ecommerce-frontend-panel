@@ -75,8 +75,8 @@ const token = localStorage.getItem('jwt')
   }
 
   useEffect(() => {
-    setNav(token)
     localStorage.setItem('cart', JSON.stringify(cartItems))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cartItems])
 
   useEffect(() => {
