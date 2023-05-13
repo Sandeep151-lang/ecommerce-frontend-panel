@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { MyContext } from '../App';
 import { Button, Row, Col } from 'reactstrap';
 import Stripe from './Stripe';
 import { NavLink } from 'react-router-dom';
 
 const Cart = () => {
-    const [data, setdata] = useState([]);
+    // const [data, setdata] = useState([]);
   
 
     const context = useContext(MyContext);
@@ -57,7 +57,7 @@ const Cart = () => {
                             <Stripe total={price}
                                 
                                 cart={context.cartItems}
-                                id={data._id}
+                                
                             />
                         </Col>
                     </Row>

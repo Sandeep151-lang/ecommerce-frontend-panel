@@ -9,7 +9,7 @@ import { Axios } from './commonApi/commonApi';
 
 const Stripe = (props) => {
     console.log(props)
-    const {   cart, id,total } = props;
+    const {   cart, total } = props;
     const jwtToken = localStorage.getItem('jwt')
     const name = sessionStorage.getItem('name')
     const email = sessionStorage.getItem('email')
@@ -30,7 +30,7 @@ const Stripe = (props) => {
                 cart,
                 name,
                 email,
-                id,
+                
                 address: token?.card
             });
             window.alert('order successfull')
