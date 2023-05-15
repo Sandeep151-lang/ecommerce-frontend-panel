@@ -13,7 +13,7 @@ const HomePage = () => {
 
 
     const load = context.loading;
-    const token = localStorage.getItem('jwt')
+    const token = localStorage.getItem('ecomJwt')
  
     const login = () => {
         window.alert('please login')

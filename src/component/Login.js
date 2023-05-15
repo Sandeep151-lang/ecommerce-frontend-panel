@@ -26,9 +26,9 @@ const Login = () => {
             const res = await Axios.post('/user/log', register);
             const { token,email,name } = res?.data;
             if (res.status === 200) {
-                setNav(true)
+                localStorage.setItem('ecomJwt', token)
+                setNav(false)
                 dispatch({ type: 'USER', payload: true })
-                localStorage.setItem('jwt', token)
                 sessionStorage.setItem('email',email)
                 sessionStorage.setItem('name',name)
                 setregister(res?.data)

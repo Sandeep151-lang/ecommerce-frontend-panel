@@ -10,7 +10,9 @@ const Navs = () => {
   const logout = ()=>{
     context.setNav(false)
   }
-    if (context.nav) {
+
+  const token = localStorage.getItem('ecomJwt')
+    if (token) {
         return (
             <nav className="navbar navbar-expand-lg navbar-light bg-light w3-card-4">
                 <div className="container-fluid">

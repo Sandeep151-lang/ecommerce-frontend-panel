@@ -40,7 +40,6 @@ const App = () => {
 
 
 
-const token = localStorage.getItem('jwt')
 
   const onAdd = async (product) => {
     setCartItems([...cartItems, product])
@@ -84,6 +83,28 @@ const token = localStorage.getItem('jwt')
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumbers])
 
+  
+const token = localStorage.getItem('ecomJwt')
+
+function LoginRoute({ component: Component, ...rest }) {
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        !token ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/",
+            }}
+          />
+        )
+      }
+    />
+  );
+}
+
   function PrivateRoute({ component: Component, ...rest }) {
     return (
       <Route
@@ -102,24 +123,6 @@ const token = localStorage.getItem('jwt')
       />
     );
   }
-  function LoginPrivateRoute({ component: Component, ...rest }) {
-    return (
-      <Route
-        {...rest}
-        render={props =>
-          !token ? (
-            <Component {...props} />
-          ) : (
-            <Redirect
-              to={{
-                pathname: "/",
-              }}
-            />
-          )
-        }
-      />
-    );
-  }
 
   return <>
     <Router>
@@ -128,8 +131,8 @@ const token = localStorage.getItem('jwt')
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path="/cart" component={Cart} />
-          <LoginPrivateRoute path='/login' component={Login} />
-          <LoginPrivateRoute path='/register' component={Register} />
+          <LoginRoute path='/login' component={Login} />
+          <LoginRoute path='/register' component={Register} />
           <PrivateRoute path="/about" component={About} />
           <PrivateRoute path="/logout" component={Logout} />
           <PrivateRoute path="/product/:_id" component={Order} />

@@ -11,7 +11,7 @@ const MyOrder = () => {
 
 
 
-const token = localStorage.getItem('jwt')
+const token = localStorage.getItem('ecomJwt')
 
     const list = async () => {
         const payload={

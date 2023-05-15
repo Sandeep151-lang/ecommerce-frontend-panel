@@ -10,7 +10,7 @@ import { Axios } from './commonApi/commonApi';
 const Stripe = (props) => {
     console.log(props)
     const {   cart, total } = props;
-    const jwtToken = localStorage.getItem('jwt')
+    const jwtToken = localStorage.getItem('ecomJwt')
     const name = sessionStorage.getItem('name')
     const email = sessionStorage.getItem('email')
 

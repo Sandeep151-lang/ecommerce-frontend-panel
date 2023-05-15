@@ -10,15 +10,14 @@ const Logout = () => {
     useEffect(() => {
         Axios.post('/user/logout').then((res) => {
             if(res){
-               
-                localStorage.removeItem('jwt')
+                localStorage.removeItem('ecomJwt')
                 dispatch({ type: 'USER', payload: false })
                 history.push('/login', { replace: true })
             }
             
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [nav])
+    }, [])
     return (
         <div>
             <h1>Logout page</h1>
