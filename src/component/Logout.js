@@ -5,7 +5,7 @@ import { MyContext } from '../App'
 import { Axios } from './commonApi/commonApi'
 
 const Logout = () => {
-    const { dispatch,nav} = useContext(MyContext)
+    const { dispatch} = useContext(MyContext)
     const history = useHistory();
     useEffect(() => {
         Axios.post('/user/logout').then((res) => {
