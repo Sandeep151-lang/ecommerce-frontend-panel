@@ -112,7 +112,7 @@ const token = localStorage.getItem('jwt')
           ) : (
             <Redirect
               to={{
-                pathname: "/login",
+                pathname: "/",
               }}
             />
           )
