@@ -102,6 +102,24 @@ const token = localStorage.getItem('jwt')
       />
     );
   }
+  function LoginPrivateRoute({ component: Component, ...rest }) {
+    return (
+      <Route
+        {...rest}
+        render={props =>
+          !token ? (
+            <Component {...props} />
+          ) : (
+            <Redirect
+              to={{
+                pathname: "/login",
+              }}
+            />
+          )
+        }
+      />
+    );
+  }
 
   return <>
     <Router>
@@ -109,9 +127,9 @@ const token = localStorage.getItem('jwt')
         <Navs setNav={setNav} nav={nav}/>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route path='/login' component={Login} />
           <Route path="/cart" component={Cart} />
-          <Route path='/register' component={Register} />
+          <LoginPrivateRoute path='/login' component={Login} />
+          <LoginPrivateRoute path='/register' component={Register} />
           <PrivateRoute path="/about" component={About} />
           <PrivateRoute path="/logout" component={Logout} />
           <PrivateRoute path="/product/:_id" component={Order} />
